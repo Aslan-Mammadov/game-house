@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/cube_logo.png";
+import logo from "../assets/cube-logo.png";
 import { HStack, Image, Switch, useColorMode, Text } from "@chakra-ui/react";
 import SearchBox from "./SearchBox";
 
