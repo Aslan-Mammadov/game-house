@@ -21,7 +21,7 @@ const Games = () => {
   spacing={3}
   padding={3}
   >
-   {games.map((game)=><Card>
+   {games.map((game)=><Card key={game.id}>
     <Image src={game.background_image}/>
     <CardBody>
       <Text>{game.name}</Text>
