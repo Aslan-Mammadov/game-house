@@ -9,8 +9,13 @@ const NavBar = () => {
     <HStack>
       <Image src={logo} boxSize="55px" />
       <SearchBox />
-      <Switch paddingX="10px" onChange={toggleColorMode} isChecked={colorMode==='dark'}/>
-      <Text whiteSpace='nowrap'>Dark Mode</Text>
+      <Switch
+        paddingX="10px"
+        onChange={toggleColorMode}
+        colorScheme="green"
+        isChecked={colorMode === "dark"}
+      />
+      <Text whiteSpace="nowrap">Dark Mode</Text>
     </HStack>
   );
 };
