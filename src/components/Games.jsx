@@ -49,10 +49,10 @@ const Games = ({selectedGenre}) => {
             height={"300px"}
           />
           <CardBody>
-            <Heading>
-              <Text>{game.name}</Text>
+            <Heading fontSize='20px'>
+              {game.name}
             </Heading>
-            <HStack justifyContent={'space-between'}>
+            <HStack justifyContent={'space-between'} marginY='10px'>
             <GamePlatforms platforms={game.parent_platforms} />
             <ScorePoint score={game.metacritic}></ScorePoint>
             </HStack>

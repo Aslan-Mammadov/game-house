@@ -24,7 +24,7 @@ const [selectedGenre, setSelectedGenre]=useState(null);
       }}
       h="200px"
       gap="1"
-      color="blackAlpha.700"
+     
     >
       <GridItem pl="2"  area={"nav"}>
        <NavBar/>
