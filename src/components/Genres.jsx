@@ -26,7 +26,7 @@ const Genres = ({ changeGenre, selectedGenre }) => {
             <Button
               variant={"link"}
               fontWeight={genre.id === selectedGenre ? "bold" : null}
-              color={genre.id === selectedGenre ? "blue" : null}
+              color={genre.id === selectedGenre ? "lightgreen" : null}
               onClick={() => {
                 changeGenre(genre.id);
               }}

@@ -13,16 +13,21 @@ import {
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./ScorePoint";
 
-const Games = ({selectedGenre}) => {
+const Games = ({ selectedGenre }) => {
   const [games, setGames] = useState([]);
   const [error, setError] = useState("");
-  let fetchingUrl=apiClient('/games')
-  const index=fetchingUrl.indexOf('?')
-  let genreFilteredUrl=fetchingUrl.slice(0, index+1)+'genres='+selectedGenre+'&'+fetchingUrl.slice(index+1)
+  let fetchingUrl = apiClient("/games");
+  const index = fetchingUrl.indexOf("?");
+  let genreFilteredUrl =
+    fetchingUrl.slice(0, index + 1) +
+    "genres=" +
+    selectedGenre +
+    "&" +
+    fetchingUrl.slice(index + 1);
 
   useEffect(() => {
     axios
-      .get(selectedGenre? genreFilteredUrl:fetchingUrl)
+      .get(selectedGenre ? genreFilteredUrl : fetchingUrl)
       .then((res) => {
         setGames(res.data.results);
       })
@@ -34,7 +39,6 @@ const Games = ({selectedGenre}) => {
       columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
       spacing={3}
       padding={3}
-      marginY='40px'
     >
       {games.map((game) => (
         <Card
@@ -49,12 +53,10 @@ const Games = ({selectedGenre}) => {
             height={"300px"}
           />
           <CardBody>
-            <Heading fontSize='20px'>
-              {game.name}
-            </Heading>
-            <HStack justifyContent={'space-between'} marginY='10px'>
-            <GamePlatforms platforms={game.parent_platforms} />
-            <ScorePoint score={game.metacritic}></ScorePoint>
+            <Heading fontSize="20px">{game.name}</Heading>
+            <HStack justifyContent={"space-between"} marginY="10px">
+              <GamePlatforms platforms={game.parent_platforms} />
+              <ScorePoint score={game.metacritic}></ScorePoint>
             </HStack>
           </CardBody>
         </Card>
