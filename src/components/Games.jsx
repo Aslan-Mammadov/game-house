@@ -13,26 +13,30 @@ import {
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./ScorePoint";
 
-const Games = ({ selectedGenre }) => {
+const Games = ({ selectedGenre, selectedPlatform }) => {
   const [games, setGames] = useState([]);
   const [error, setError] = useState("");
   let fetchingUrl = apiClient("/games");
   const index = fetchingUrl.indexOf("?");
-  let genreFilteredUrl =
+  const genreTag = selectedGenre ? "genres=" + selectedGenre + "&" : "";
+  const platformTag = selectedPlatform
+    ? "parent_platforms=" + selectedPlatform.id + "&"
+    : "";
+
+  let clientApiAddress =
     fetchingUrl.slice(0, index + 1) +
-    "genres=" +
-    selectedGenre +
-    "&" +
+    platformTag +
+    genreTag +
     fetchingUrl.slice(index + 1);
 
   useEffect(() => {
     axios
-      .get(selectedGenre ? genreFilteredUrl : fetchingUrl)
+      .get(clientApiAddress)
       .then((res) => {
         setGames(res.data.results);
       })
       .catch((err) => setError(err.message));
-  }, [selectedGenre]);
+  }, [selectedGenre, selectedPlatform]);
 
   return (
     <SimpleGrid

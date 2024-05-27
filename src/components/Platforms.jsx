@@ -12,7 +12,6 @@ import {
 import { Icon , HStack} from "@chakra-ui/react";
 
 
-
 const GamePlatforms = ({ platforms }) => {
     const iconMap={
         pc:FaWindows,
@@ -24,9 +23,8 @@ const GamePlatforms = ({ platforms }) => {
         web: BsGlobe,
         nintendo: SiNintendo,
         ios:MdPhoneIphone,
-
-
     }
+
   return (
     <HStack marginY={'10px'}>
       {platforms.map((p) => (

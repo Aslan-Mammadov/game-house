@@ -5,16 +5,18 @@ import Genres from "./components/Genres";
 import { useState } from "react";
 import PlatformList from "./components/PlatformList";
 
+
 function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const[selectedPlatform, setSelectedPlatform] = useState(null);
+
+  function selectPlatform(p){
+    setSelectedPlatform(p)
+  }
   function changeGenre(id) {
     setSelectedGenre(id);
   }
-  const platforms = [
-    { name: "Android", id: 1 },
-    { name: "dsfgdfg", id: 2 },
-    { name: "Androiddf", id: 3 },
-  ];
+  
   return (
     <Grid
       templateAreas={{
@@ -40,8 +42,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem pl="2" area={"main"}>
-        <PlatformList platforms={platforms} marginY="20px" />
-        <Games selectedGenre={selectedGenre} />
+        <PlatformList  marginY="20px"  selectPlatform={selectPlatform} selectedPlatform={selectedPlatform}/>
+        <Games selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}/>
       </GridItem>
       <GridItem pl="2" area={"footer"}>
         Footer
