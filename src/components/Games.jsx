@@ -15,7 +15,7 @@ import ScorePoint from "./ScorePoint";
 
 const Games = ({ selectedGenre, selectedPlatform }) => {
   const [games, setGames] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   let fetchingUrl = apiClient("/games");
   const index = fetchingUrl.indexOf("?");
   const genreTag = selectedGenre ? "genres=" + selectedGenre + "&" : "";
@@ -38,12 +38,14 @@ const Games = ({ selectedGenre, selectedPlatform }) => {
       .catch((err) => setError(err.message));
   }, [selectedGenre, selectedPlatform]);
 
+  
   return (
     <SimpleGrid
-      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-      spacing={3}
-      padding={3}
+    columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+    spacing={3}
+    padding={3}
     >
+      {error && <Text color="tomato">{error}</Text> }
       {games.map((game) => (
         <Card
           key={game.id}

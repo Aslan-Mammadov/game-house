@@ -23,6 +23,7 @@ const PlatformList = ({selectPlatform, selectedPlatform}) => {
         marginY="10px"
         marginX="10px"
       >
+        {error && error}
         {selectedPlatform ? selectedPlatform.name: 'Platforms'}
       </MenuButton>
       <MenuList>
