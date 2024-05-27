@@ -11,9 +11,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import GamePlatforms from "./Platforms";
-import ScorePoint from "./ScorePoint";
+import ScorePoint from "./scorepoint/ScorePoint";
 
-const Games = ({ selectedGenre, selectedPlatform }) => {
+const Games = ({ selectedGenre, selectedPlatform, searchText }) => {
   const [games, setGames] = useState([]);
   const [error, setError] = useState('');
   let fetchingUrl = apiClient("/games");
@@ -22,11 +22,12 @@ const Games = ({ selectedGenre, selectedPlatform }) => {
   const platformTag = selectedPlatform
     ? "parent_platforms=" + selectedPlatform.id + "&"
     : "";
-
+ const searchTextTag= searchText? 'search='+searchText+'&' : '';
   let clientApiAddress =
     fetchingUrl.slice(0, index + 1) +
     platformTag +
     genreTag +
+    searchTextTag +
     fetchingUrl.slice(index + 1);
 
   useEffect(() => {
@@ -36,13 +37,13 @@ const Games = ({ selectedGenre, selectedPlatform }) => {
         setGames(res.data.results);
       })
       .catch((err) => setError(err.message));
-  }, [selectedGenre, selectedPlatform]);
+  }, [selectedGenre, selectedPlatform, searchText]);
 
   
   return (
     <SimpleGrid
     columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-    spacing={3}
+    spacing={7}
     padding={3}
     >
       {error && <Text color="tomato">{error}</Text> }
@@ -59,11 +60,11 @@ const Games = ({ selectedGenre, selectedPlatform }) => {
             height={"300px"}
           />
           <CardBody>
-            <Heading fontSize="20px">{game.name}</Heading>
             <HStack justifyContent={"space-between"} marginY="10px">
               <GamePlatforms platforms={game.parent_platforms} />
               <ScorePoint score={game.metacritic}></ScorePoint>
             </HStack>
+            <Heading fontSize="20px">{game.name}</Heading>
           </CardBody>
         </Card>
       ))}

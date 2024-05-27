@@ -1,14 +1,14 @@
 import React from "react";
 import logo from "../assets/cube-logo.png";
 import { HStack, Image, Switch, useColorMode, Text } from "@chakra-ui/react";
-import SearchBox from "./SearchBox";
+import SearchBox from "./searchBox/SearchBox";
 
-const NavBar = () => {
+const NavBar = ({onSearch}) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <HStack>
       <Image src={logo} boxSize="55px" />
-      <SearchBox />
+      <SearchBox onSearch={onSearch}/>
       <Switch
         paddingX="10px"
         onChange={toggleColorMode}

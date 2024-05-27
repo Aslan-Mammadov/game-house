@@ -28,7 +28,7 @@ const GamePlatforms = ({ platforms }) => {
   return (
     <HStack marginY={'10px'}>
       {platforms.map((p) => (
-        <Icon as ={iconMap[p.platform.slug]} fontSize={'25px'} color='gray.500' key={p.platform.id}/>
+        <Icon as ={iconMap[p.platform.slug]} fontSize={'20px'} color='gray.500' key={p.platform.id}/>
       ))}
     </HStack>
   );
