@@ -4,18 +4,18 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/apiClient";
 import axios from "axios";
 
-const PlatformList = ({selectPlatform, selectedPlatform}) => {
-    const [platformList, setPlatformList]=useState([])
-    const [error, setError]=useState('')
+const PlatformList = ({ selectPlatform, selectedPlatform }) => {
+  const [platformList, setPlatformList] = useState([]);
+  const [error, setError] = useState("");
 
-    useEffect(()=>{
-        axios
-        .get(apiClient('/platforms/lists/parents'))
-        .then(res=>setPlatformList(res.data.results))
-        .catch(err=>setError(err.message))
-      },[])
-  
-    return (
+  useEffect(() => {
+    axios
+      .get(apiClient("/platforms/lists/parents"))
+      .then((res) => setPlatformList(res.data.results))
+      .catch((err) => setError(err.message));
+  }, []);
+
+  return (
     <Menu>
       <MenuButton
         as={Button}
@@ -24,15 +24,18 @@ const PlatformList = ({selectPlatform, selectedPlatform}) => {
         marginX="10px"
       >
         {error && error}
-        {selectedPlatform ? selectedPlatform.name: 'Platforms'}
+        {selectedPlatform ? selectedPlatform.name : "Platforms"}
       </MenuButton>
       <MenuList>
         {platformList.map((p) => (
-          <MenuItem key={p.id}
-          onClick={()=>{
-            selectPlatform(p)
-        }}
-          >{p.name}</MenuItem>
+          <MenuItem
+            key={p.id}
+            onClick={() => {
+              selectPlatform(p);
+            }}
+          >
+            {p.name}
+          </MenuItem>
         ))}
       </MenuList>
     </Menu>

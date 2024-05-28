@@ -5,23 +5,27 @@ import Genres from "./components/Genres";
 import { useState } from "react";
 import PlatformList from "./components/PlatformList";
 import Footer from "./components/footer/Footer";
-
+import ShowSaved from "./components/ShowSaved";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
-  const[selectedPlatform, setSelectedPlatform] = useState(null);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
   const [searchText, setSearchText] = useState(null);
+  const [showSaved, setShowSaved] = useState(false);
 
-  function selectPlatform(p){
-    setSelectedPlatform(p)
+  function selectPlatform(p) {
+    setSelectedPlatform(p);
   }
   function changeGenre(id) {
     setSelectedGenre(id);
   }
-  function onSearch(value){
+  function onSearch(value) {
     setSearchText(value);
   }
-  
+  function handleShow(param) {
+    setShowSaved(param);
+  }
+
   return (
     <Grid
       templateAreas={{
@@ -47,11 +51,21 @@ function App() {
         </GridItem>
       </Show>
       <GridItem pl="2" area={"main"}>
-        <PlatformList  marginY="20px"  selectPlatform={selectPlatform} selectedPlatform={selectedPlatform}/>
-        <Games selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} searchText={searchText}/>
+        <PlatformList
+          marginY="20px"
+          selectPlatform={selectPlatform}
+          selectedPlatform={selectedPlatform}
+        />
+        <ShowSaved handleShow={handleShow} />
+        <Games
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+          searchText={searchText}
+          showSaved={showSaved}
+        />
       </GridItem>
       <GridItem pl="2" area={"footer"}>
-        <Footer/>
+        <Footer />
       </GridItem>
     </Grid>
   );

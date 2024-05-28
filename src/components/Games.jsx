@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import apiClient from "../services/apiClient";
-import {
-  CardBody,
-  SimpleGrid,
-  Text,
-  Card,
-  Image,
-  Heading,
-  HStack,
-} from "@chakra-ui/react";
-import GamePlatforms from "./Platforms";
-import ScorePoint from "./scorepoint/ScorePoint";
+import { SimpleGrid } from "@chakra-ui/react";
+import GameList from "./GameList";
+import MyList from "./MyList";
 
-const Games = ({ selectedGenre, selectedPlatform, searchText }) => {
+const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
   const [games, setGames] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [savedGames, setSavedGames] = useState([]);
   let fetchingUrl = apiClient("/games");
   const index = fetchingUrl.indexOf("?");
   const genreTag = selectedGenre ? "genres=" + selectedGenre + "&" : "";
   const platformTag = selectedPlatform
     ? "parent_platforms=" + selectedPlatform.id + "&"
     : "";
- const searchTextTag= searchText? 'search='+searchText+'&' : '';
+  const searchTextTag = searchText ? "search=" + searchText + "&" : "";
   let clientApiAddress =
     fetchingUrl.slice(0, index + 1) +
     platformTag +
     genreTag +
     searchTextTag +
     fetchingUrl.slice(index + 1);
+
+  function saveGames(value) {
+    setSavedGames([...savedGames, value]);
+  }
+  function removeGames(value) {
+    setSavedGames([...savedGames.filter((g) => g.id !== value.id)]);
+  }
 
   useEffect(() => {
     axios
@@ -39,35 +39,17 @@ const Games = ({ selectedGenre, selectedPlatform, searchText }) => {
       .catch((err) => setError(err.message));
   }, [selectedGenre, selectedPlatform, searchText]);
 
-  
   return (
     <SimpleGrid
-    columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-    spacing={7}
-    padding={3}
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      spacing={7}
+      padding={3}
     >
-      {error && <Text color="tomato">{error}</Text> }
-      {games.map((game) => (
-        <Card
-          key={game.id}
-          borderRadius="25px"
-          height={"450px"}
-          overflow={"hidden"}
-        >
-          <Image
-            src={game.background_image}
-            objectFit="cover"
-            height={"300px"}
-          />
-          <CardBody>
-            <HStack justifyContent={"space-between"} marginY="10px">
-              <GamePlatforms platforms={game.parent_platforms} />
-              <ScorePoint score={game.metacritic}></ScorePoint>
-            </HStack>
-            <Heading fontSize="20px">{game.name}</Heading>
-          </CardBody>
-        </Card>
-      ))}
+      {showSaved ? (
+        <MyList savedGames={savedGames} removeGames={removeGames}></MyList>
+      ) : (
+        <GameList games={games} saveGames={saveGames}></GameList>
+      )}
     </SimpleGrid>
   );
 };
