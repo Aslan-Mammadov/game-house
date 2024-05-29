@@ -1,12 +1,10 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import "./searchBox.css";
-import ErrorMsg from "../errorMessages/ErrorMsg";
 
 const SearchBox = ({ onSearch }) => {
   let inputRef = useRef(null);
-  const [error, setError] = useState();
   return (
     <form
       onSubmit={(e) => {
@@ -30,7 +28,7 @@ const SearchBox = ({ onSearch }) => {
           required
           minLength="3"
         />
-        {error && <ErrorMsg error={error} />}
+  
       </InputGroup>
     </form>
   );

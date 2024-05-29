@@ -45,7 +45,7 @@ const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
         setGames([...res.data.results]);
       })
       .catch((err) => setError(err.message));
-  }, [selectedGenre, selectedPlatform, searchText]);
+  }, [selectedGenre, selectedPlatform, searchText, clientApiAddress]);
 
   return (
     <Grid>

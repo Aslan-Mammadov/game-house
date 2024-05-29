@@ -7,15 +7,12 @@ import { Button, HStack, Heading, Image, List, ListItem } from "@chakra-ui/react
 
 const Genres = ({ changeGenre, selectedGenre }) => {
   const [genres, setGenres] = useState([]);
-  const [error, setError] = useState([]);
   useEffect(() => {
     axios
       .get(apiClient("/genres"))
       .then((res) => {
         setGenres(res.data.results);
-        setError("");
       })
-      .catch((err) => setError(err.message));
   }, []);
 
 
