@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Heading, Show, Box, Text } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameContainer from "./components/games/GameContainer";
 import Genres from "./components/Genres";
@@ -15,8 +15,8 @@ function App() {
   function selectPlatform(p) {
     setSelectedPlatform(p);
   }
-  function changeGenre(id) {
-    setSelectedGenre(id);
+  function changeGenre(genre) {
+    setSelectedGenre(genre);
   }
   function onSearch(value) {
     setSearchText(value);
@@ -30,8 +30,7 @@ function App() {
       templateAreas={{
         base: `'nav' 'main'`,
         lg: `"nav nav"
-    "aside main"`
-    
+    "aside main"`,
       }}
       gridTemplateRows={"50px 1fr"}
       gridTemplateColumns={{
@@ -56,12 +55,16 @@ function App() {
           selectedPlatform={selectedPlatform}
         />
         <ShowSaved handleShow={handleShow} showSaved={showSaved} />
+        <Box>
+          {searchText && <Heading paddingLeft={4}>{searchText}</Heading>}
         <GameContainer
           selectedGenre={selectedGenre}
           selectedPlatform={selectedPlatform}
           searchText={searchText}
           showSaved={showSaved}
         />
+        </Box>
+        
       </GridItem>
     </Grid>
   );

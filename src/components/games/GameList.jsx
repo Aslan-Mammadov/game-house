@@ -35,7 +35,7 @@ const GameList = ({ games, saveGames, isLoading, savedGames, removeGames }) => {
       {!games.length && !isLoading && (
         <Alert status="warning" alignContent={"center"}>
           <AlertIcon />
-          No games has found.
+          No games have been found.
         </Alert>
       )}
       {isLoading && Skeletons}

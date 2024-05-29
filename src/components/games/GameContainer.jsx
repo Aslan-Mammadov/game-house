@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import apiClient from "../../services/apiClient";
-import { SimpleGrid, Grid } from "@chakra-ui/react";
+import { SimpleGrid, Grid} from "@chakra-ui/react";
 import GameList from "./GameList";
 import MyList from "./MyList";
 import ErrorMsg from "../errorMessages/ErrorMsg";
@@ -13,7 +13,7 @@ const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
   const [isLoading, setLoading] = useState(false);
   let fetchingUrl = apiClient("/games");
   const index = fetchingUrl.indexOf("?");
-  const genreTag = selectedGenre ? "genres=" + selectedGenre + "&" : "";
+  const genreTag = selectedGenre ? "genres=" + selectedGenre.id + "&" : "";
   const platformTag = selectedPlatform
     ? "parent_platforms=" + selectedPlatform.id + "&"
     : "";
