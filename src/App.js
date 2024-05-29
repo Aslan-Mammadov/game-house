@@ -28,15 +28,15 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `'nav' 'main' 'footer'`,
-        md: `"nav nav"
+        base: `'nav' 'main'`,
+        lg: `"nav nav"
     "aside main"`
     
       }}
-      gridTemplateRows={"50px 1fr 30px"}
+      gridTemplateRows={"50px 1fr"}
       gridTemplateColumns={{
         base: "1fr",
-        md: "200px 1fr",
+        lg: "200px 1fr",
       }}
       h="100vh"
       gap="1"
@@ -44,7 +44,7 @@ function App() {
       <GridItem pl="2" area={"nav"}>
         <NavBar onSearch={onSearch} />
       </GridItem>
-      <Show above="md">
+      <Show above="lg">
         <GridItem pl="2" area={"aside"}>
           <Genres changeGenre={changeGenre} selectedGenre={selectedGenre} />
         </GridItem>

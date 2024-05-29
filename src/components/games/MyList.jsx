@@ -10,8 +10,9 @@ import {
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./scorePoint/ScorePoint";
 import RemoveBtn from "./RemoveBtn";
+import DeleteBtn from "./DeleteBtn";
 
-const MyList = ({ removeGames, savedGames }) => {
+const MyList = ({ removeGames, savedGames, deleteMyGame }) => {
   return (
     <>
       {!savedGames.length && (
@@ -39,7 +40,7 @@ const MyList = ({ removeGames, savedGames }) => {
             </HStack>
             <HStack justifyContent="space-between">
               <Heading fontSize="20px">{game.name}</Heading>
-              <RemoveBtn removeGames={removeGames} game={game}></RemoveBtn>
+              <DeleteBtn deleteMyGame={deleteMyGame} game={game}></DeleteBtn>
             </HStack>
           </CardBody>
         </Card>

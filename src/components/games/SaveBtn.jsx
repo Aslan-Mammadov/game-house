@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react";
+import { MdOutlineSaveAlt } from "react-icons/md";
 
 const SaveBtn = ({ saveGames, game, isSaved }) => {
   return (
@@ -12,7 +13,7 @@ const SaveBtn = ({ saveGames, game, isSaved }) => {
         saveGames(game);
       }}
     >
-      {isSaved ? "Saved" : "Save"}
+      <MdOutlineSaveAlt/>
     </Button>
   );
 };

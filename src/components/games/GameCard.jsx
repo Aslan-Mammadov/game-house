@@ -2,8 +2,9 @@ import { CardBody, Card, Image, Heading, HStack } from "@chakra-ui/react";
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./scorePoint/ScorePoint";
 import SaveBtn from "./SaveBtn";
+import RemoveBtn from "./RemoveBtn";
 
-const GameCard = ({ game, saveGames, isSaved }) => {
+const GameCard = ({ game, saveGames, isSaved, removeGames }) => {
   return (
     <Card
       key={game.id}
@@ -19,11 +20,18 @@ const GameCard = ({ game, saveGames, isSaved }) => {
         </HStack>
         <HStack justifyContent="space-between">
           <Heading fontSize="20px">{game.name}</Heading>
-          <SaveBtn
-            saveGames={saveGames}
-            game={game}
-            isSaved={isSaved}
-          ></SaveBtn>
+          <HStack>
+            <SaveBtn
+              saveGames={saveGames}
+              game={game}
+              isSaved={isSaved}
+            ></SaveBtn>
+            <RemoveBtn
+             removeGames={removeGames}
+              game={game}
+              isSaved={isSaved}
+              ></RemoveBtn>
+          </HStack>
         </HStack>
       </CardBody>
     </Card>

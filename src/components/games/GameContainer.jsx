@@ -29,6 +29,9 @@ const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
   function saveGames(value) {
     setSavedGames([...savedGames, value]);
   }
+  function deleteMyGame(value) {
+    setSavedGames([...savedGames.filter((g) => g.id !== value.id)]);
+  }
   function removeGames(value) {
     setSavedGames([...savedGames.filter((g) => g.id !== value.id)]);
   }
@@ -47,19 +50,20 @@ const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
   return (
     <Grid>
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        columns={{ sm: 2, md: 2, lg: 3, xl: 4 }}
         spacing={7}
         padding={3}
       >
         {error && <ErrorMsg error={error}></ErrorMsg>}
         {showSaved ? (
-          <MyList savedGames={savedGames} removeGames={removeGames}></MyList>
+          <MyList savedGames={savedGames} deleteMyGame={deleteMyGame}></MyList>
         ) : (
           <GameList
             games={games}
             saveGames={saveGames}
             isLoading={isLoading}
             savedGames={savedGames}
+            removeGames={removeGames}
           ></GameList>
         )}
       </SimpleGrid>

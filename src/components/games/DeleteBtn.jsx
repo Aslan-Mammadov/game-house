@@ -1,21 +1,20 @@
 import { Button } from "@chakra-ui/react";
-import { FaTrashCan } from "react-icons/fa6";
+import React from "react";
 
-const RemoveBtn = ({ removeGames, game, isSaved }) => {
+const DeleteBtn = ({ deleteMyGame, game }) => {
   return (
     <Button
       colorScheme="red"
       variant="outline"
       border="1px solid"
       size="sm"
-      isDisabled={!isSaved}
       onClick={() => {
-        removeGames(game);
+        deleteMyGame(game);
       }}
     >
-      <FaTrashCan />
+      Delete
     </Button>
   );
 };
 
-export default RemoveBtn;
+export default DeleteBtn;
