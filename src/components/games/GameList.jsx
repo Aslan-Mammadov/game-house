@@ -1,7 +1,7 @@
 import GameCard from "./GameCard";
-import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
-import { Button, HStack, Alert, AlertIcon } from "@chakra-ui/react";
+import { HStack, Alert, AlertIcon } from "@chakra-ui/react";
 import SkeletonGame from "./Skeleton";
+import ModalBtn from "../ModalPreviousBtn";
 
 const GameList = ({ games, saveGames, isLoading, savedGames, removeGames }) => {
   let Skeletons = null;
@@ -19,7 +19,9 @@ const GameList = ({ games, saveGames, isLoading, savedGames, removeGames }) => {
       displayedGame = game;
     } else {
       isSaved = true;
-    }
+    };
+
+
     return (
       <GameCard
         game={displayedGame}
@@ -42,8 +44,9 @@ const GameList = ({ games, saveGames, isLoading, savedGames, removeGames }) => {
       {Games}
       {games.length > 1 && (
         <HStack marginY="15px">
-          <Button leftIcon={<GrLinkPrevious />}>Previous</Button>
-          <Button rightIcon={<GrLinkNext />}> Next Page</Button>
+          <ModalBtn name={'Previous'}></ModalBtn>
+          <ModalBtn name={'Next'}></ModalBtn>
+       
         </HStack>
       )}
     </>
