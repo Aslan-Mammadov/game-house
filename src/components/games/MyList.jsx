@@ -1,4 +1,12 @@
-import { CardBody, Card, Image, Heading, HStack } from "@chakra-ui/react";
+import {
+  CardBody,
+  Card,
+  Image,
+  Heading,
+  HStack,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./scorePoint/ScorePoint";
 import RemoveBtn from "./RemoveBtn";
@@ -6,6 +14,12 @@ import RemoveBtn from "./RemoveBtn";
 const MyList = ({ removeGames, savedGames }) => {
   return (
     <>
+      {!savedGames.length && (
+        <Alert status="info">
+          <AlertIcon />
+          No games has been saved
+        </Alert>
+      )}
       {savedGames.map((game) => (
         <Card
           key={game.id}

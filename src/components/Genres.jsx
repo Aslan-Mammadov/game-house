@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiClient from "../services/apiClient";
-import { Button, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
+import ErrorMsg from "./errorMessages/ErrorMsg";
 
 const Genres = ({ changeGenre, selectedGenre }) => {
   const [genres, setGenres] = useState([]);
@@ -10,12 +11,16 @@ const Genres = ({ changeGenre, selectedGenre }) => {
   useEffect(() => {
     axios
       .get(apiClient("/genres"))
-      .then((res) => setGenres(res.data.results))
+      .then((res) => {
+        setGenres(res.data.results);
+        setError("");
+      })
       .catch((err) => setError(err.message));
   }, []);
+
+
   return (
     <>
-      {error && <Text color="tomato">{error}</Text>}
       <List marginY="40px">
         {genres.map((genre) => (
           <ListItem key={genre.id} marginY="15px">

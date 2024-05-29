@@ -1,5 +1,5 @@
 import { Badge } from "@chakra-ui/react";
-import "../scorePoint/scorepoint.css";
+import "./scorepoint.css";
 
 const ScorePoint = ({ score }) => {
   let color =

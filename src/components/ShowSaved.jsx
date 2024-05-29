@@ -1,7 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-const Show = ({ handleShow }) => {
+const Show = ({ handleShow, showSaved }) => {
   return (
     <Menu>
       <MenuButton
@@ -10,7 +10,7 @@ const Show = ({ handleShow }) => {
         marginY="10px"
         marginX="10px"
       >
-        Show
+        {showSaved? 'Saved Games': 'All Games'}
       </MenuButton>
       <MenuList>
         <MenuItem

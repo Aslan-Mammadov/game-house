@@ -1,10 +1,9 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import Games from "./components/Games";
+import GameContainer from "./components/games/GameContainer";
 import Genres from "./components/Genres";
 import { useState } from "react";
 import PlatformList from "./components/PlatformList";
-import Footer from "./components/footer/Footer";
 import ShowSaved from "./components/ShowSaved";
 
 function App() {
@@ -31,8 +30,8 @@ function App() {
       templateAreas={{
         base: `'nav' 'main' 'footer'`,
         md: `"nav nav"
-    "aside main"
-    "aside footer"`,
+    "aside main"`
+    
       }}
       gridTemplateRows={"50px 1fr 30px"}
       gridTemplateColumns={{
@@ -56,16 +55,13 @@ function App() {
           selectPlatform={selectPlatform}
           selectedPlatform={selectedPlatform}
         />
-        <ShowSaved handleShow={handleShow} />
-        <Games
+        <ShowSaved handleShow={handleShow} showSaved={showSaved} />
+        <GameContainer
           selectedGenre={selectedGenre}
           selectedPlatform={selectedPlatform}
           searchText={searchText}
           showSaved={showSaved}
         />
-      </GridItem>
-      <GridItem pl="2" area={"footer"}>
-        <Footer />
       </GridItem>
     </Grid>
   );
