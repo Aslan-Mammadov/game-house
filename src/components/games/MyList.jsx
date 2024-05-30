@@ -1,7 +1,6 @@
 import {
   CardBody,
   Card,
-  Image,
   Heading,
   HStack,
   Alert,
