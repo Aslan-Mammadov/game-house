@@ -1,5 +1,5 @@
 
-# [Game House](https://https://aslan-gamehouse-mammadov.netlify.app/)
+# [Game House](https://aslan-gamehouse-mammadov.netlify.app/)
 
 Game House is a web application that allows users to search for Games online.
 
