@@ -5,7 +5,7 @@ function ImageCarousel({ game }) {
   const screenShotsList = game.short_screenshots;
   const Screenshots = screenShotsList.map((screenshot) => (
     <Carousel.Item key={screenshot.id}>
-      <Image src={screenshot.image} height="290px" />
+      <Image src={screenshot.image} height={"300px"} width={'600px'} />
     </Carousel.Item>
   ));
   return <Carousel interval={null}>{Screenshots}</Carousel>;
