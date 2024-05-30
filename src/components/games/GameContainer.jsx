@@ -43,6 +43,7 @@ const Games = ({ selectedGenre, selectedPlatform, searchText, showSaved }) => {
       .then((res) => {
         setLoading(false);
         setGames([...res.data.results]);
+        console.log(res.data.results)
       })
       .catch((err) => setError(err.message));
   }, [selectedGenre, selectedPlatform, searchText, clientApiAddress]);

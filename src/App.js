@@ -5,6 +5,7 @@ import Genres from "./components/Genres";
 import { useState } from "react";
 import PlatformList from "./components/PlatformList";
 import ShowSaved from "./components/ShowSaved";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);

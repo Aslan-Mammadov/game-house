@@ -3,6 +3,7 @@ import GamePlatforms from "./Platforms";
 import ScorePoint from "./scorePoint/ScorePoint";
 import SaveBtn from "./SaveBtn";
 import RemoveBtn from "./RemoveBtn";
+import ImageCarousel from "../Carousel";
 
 const GameCard = ({ game, saveGames, isSaved, removeGames }) => {
   return (
@@ -12,7 +13,7 @@ const GameCard = ({ game, saveGames, isSaved, removeGames }) => {
       height={"450px"}
       overflow={"hidden"}
     >
-      <Image src={game.background_image} objectFit="cover" height={"300px"} />
+      <ImageCarousel game={game} />
       <CardBody>
         <HStack justifyContent={"space-between"} marginY="10px">
           <GamePlatforms platforms={game.parent_platforms} />

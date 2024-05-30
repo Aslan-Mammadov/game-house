@@ -7,23 +7,20 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
+import ImageCarousel from "../Carousel";
 import GamePlatforms from "./Platforms";
 import ScorePoint from "./scorePoint/ScorePoint";
 import DeleteBtn from "./DeleteBtn";
 
 const MyList = ({ savedGames, deleteMyGame }) => {
-  const SavedGames=savedGames.map((game) => (
+  const SavedGames = savedGames.map((game) => (
     <Card
       key={game.id}
       borderRadius="25px"
       height={"450px"}
       overflow={"hidden"}
     >
-      <Image
-        src={game.background_image}
-        objectFit="cover"
-        height={"300px"}
-      />
+      <ImageCarousel game={game}></ImageCarousel>
       <CardBody>
         <HStack justifyContent={"space-between"} marginY="10px">
           <GamePlatforms platforms={game.parent_platforms} />
@@ -35,7 +32,7 @@ const MyList = ({ savedGames, deleteMyGame }) => {
         </HStack>
       </CardBody>
     </Card>
-  ))
+  ));
   return (
     <>
       {!savedGames.length && (
