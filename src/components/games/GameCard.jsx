@@ -20,7 +20,7 @@ const GameCard = ({ game, saveGames, isSaved, removeGames }) => {
           <ScorePoint score={game.metacritic}></ScorePoint>
         </HStack>
         <HStack justifyContent="space-between">
-          <Heading fontSize="20px">{game.name}</Heading>
+          <Heading fontSize="18px">{game.name}</Heading>
           <HStack>
             <SaveBtn
               saveGames={saveGames}
